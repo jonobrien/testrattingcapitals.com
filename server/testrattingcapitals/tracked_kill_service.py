@@ -89,8 +89,7 @@ def convert_zk_timestamp_to_datetime(zk_timestamp):
 def convert_zk_response_to_tracked_kill(tracking_label, zk):
     """Convert zk response dict to a TrackedKill instance
     """
-    
-    # Should this be an and?
+
     if not isinstance(tracking_label, str) or not isinstance(zk, dict):
         return None
 

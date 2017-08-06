@@ -25,12 +25,13 @@ middleware_modules = [
 
 
 MIDDLEWARE_METHODS = [
-  'before_first_request',
-  'before_request',
-  'teardown_request',
-  'after_request',
+    'before_first_request',
+    'before_request',
+    'teardown_request',
+    'after_request',
 ]
-  
+
+
 def register(app):
     if not isinstance(app, Flask):
         raise TypeError('app')
