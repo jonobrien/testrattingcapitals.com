@@ -17,6 +17,7 @@ Reads in a stream of all "kill" events in EVE Online and stores interesting
 
 ## Docker images
 
+* [api](https://hub.docker.com/r/tonymke/testrattingcapitals-api/)
 * [daemon](https://hub.docker.com/r/tonymke/testrattingcapitals-daemon/)
 * [reprocessor](https://hub.docker.com/r/tonymke/testrattingcapitals-reprocessor/)
 * [cacher](https://hub.docker.com/r/tonymke/testrattingcapitals-cacher/)
