@@ -1,26 +1,41 @@
 # testrattingcapitals.com
 
-A quick and dirty digital Wall of Shame for the EVE group TEST Alliance Please Ignore.
+A digital Wall of Shame for the EVE Online group TEST Alliance Please Ignore.
 
-Reads in the latest of specific types of ship losses, and renders how long ago they were, and a link to the most recent kill
+Reads in a stream of all "kill" events in EVE Online and stores interesting 
+(read: hilariously embarassing) ones.
 
-Built in react/redux, with a simple node script to run in cron to update.
+## Services
 
-## Prerequisites.
+* **daemon** _(python)_ reads in kill events from [zKillboard
+  RedisQ](https://github.com/zKillboard/RedisQ), persists ones we identify as
+  interesting
+* **cacher** _(python)_  runs a predefined set of queries and stores the
+  results in redis for consumption by a REST api
+* **api** _(python)_ anonymous public REST API
+* **webclient** _(javascript)_ web client to render results
 
-* Node 6.9+
-* yarn, gulp, babel, webpack
-  * `npm install -g yarn gulp babel-cli webpack`
+## Docker images
 
-## Build
+* [api](https://hub.docker.com/r/tonymke/testrattingcapitals-api/)
+* [daemon](https://hub.docker.com/r/tonymke/testrattingcapitals-daemon/)
+* [reprocessor](https://hub.docker.com/r/tonymke/testrattingcapitals-reprocessor/)
+* [cacher](https://hub.docker.com/r/tonymke/testrattingcapitals-cacher/)
 
-1. ``yarn``
-2. ``yarn start``
+## License
 
-Web client lands in _/dist_, server script lands in _/lib/server_.
+    Copyright (c) 2016-2017 Tony Lechner and contributors
 
-## Run (production)
+    testrattingcapitals.com is free software: you can redistribute it and/or
+    modify it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
 
-* Build
-* dump the contents of _/dist_ into your web server root
-* add a crontab entry to run the serverside script at the interval of your choice. Redirect stdout to your _/webserver_root/data.json_
+    testrattingcapitals.com is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with testrattingcapitals.com.  If not, see 
+    <http://www.gnu.org/licenses/>.
